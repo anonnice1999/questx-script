@@ -3,19 +3,19 @@ package resource
 type WriteMedium struct{}
 
 func (*WriteMedium) Type() string {
-	return "image"
+	return "url"
 }
 
 func (*WriteMedium) Title() string {
-	return "Add Project logo to Twitter profile picture"
+	return "Write a Medium article about Project"
 }
 
 func (*WriteMedium) Description() string {
-	return "MISSION 🎯\n\nAdd Logo to your Twitter Profile Picture.\nYou can find Logo here: Link\n\nSUBMISSION 📝\n\nSubmit your Twitter URL"
+	return "MISSION 🎯\n\nWrite an article about Project at least 300 words in any languages.\n\nGUIDE 📚\n\nBe creative, be positive.\nType of article:\n- information\n- tutorial\n- analyses\n\n- cases studies\n\nSUBMISSION 📝\n\nUpload your piece of art on Medium (make it public!)\n\nPost your work on #✍-medium Channel on Discord Link"
 }
 
 func (*WriteMedium) Recurrence() string {
-	return "once"
+	return "weekly"
 }
 
 func (*WriteMedium) Category() string {
@@ -24,7 +24,7 @@ func (*WriteMedium) Category() string {
 
 func (*WriteMedium) Awards() []map[string]any {
 	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 100}},
+		{"type": "points", "data": map[string]any{"points": 200}},
 	}
 }
 

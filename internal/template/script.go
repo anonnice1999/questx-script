@@ -25,6 +25,9 @@ var templates = []Template{
 	&resource.TwitterReaction{},                 // 11
 	&resource.SetTwitterAvatarToCommunityLogo{}, // 12
 	&resource.WriteMedium{},                     // 13
+	&resource.CreateCommunityVideo{},            // 14
+	&resource.ParticipateInCommunityEvent{},     // 15
+	&resource.TryProductDemo{},                  // 16
 }
 
 func Run(apiEndpoint, accessToken string) error {
