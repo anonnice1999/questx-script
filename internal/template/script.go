@@ -12,13 +12,19 @@ import (
 )
 
 var templates = []Template{
-	&resource.DailyConnectTemplate{},
-	&resource.FollowTwitter{},
-	&resource.InviteFriendToDiscord{},
-	&resource.SetDiscordAvatarToCommunityLogo{},
-	&resource.DailyKnowFrens{},
-	&resource.ReachDiscordLevel{},
-	&resource.LeaveStarOnProductHunt{},
+	&resource.DailyConnectTemplate{},            // 01
+	&resource.FollowTwitter{},                   // 02
+	&resource.InviteFriendToDiscord{},           // 03
+	&resource.SetDiscordAvatarToCommunityLogo{}, // 04
+	&resource.DailyKnowFrens{},                  // 05
+	&resource.ReachDiscordLevel{},               // 06
+	&resource.LeaveStarOnProductHunt{},          // 07
+	&resource.CreateProductMeme{},               // 08
+	&resource.ShareCommunity{},                  // 09
+	&resource.InviteFollowCommunity{},           // 10
+	&resource.TwitterReaction{},                 // 11
+	&resource.SetTwitterAvatarToCommunityLogo{}, // 12
+	&resource.WriteMedium{},                     // 13
 }
 
 func Run(apiEndpoint, accessToken string) error {
@@ -217,7 +223,7 @@ func getExistingTemplate(ctx context.Context, apiEndpoint, accessToken string) (
 		return nil, err
 	}
 
-	templates, err := data.GetArray("quests")
+	templates, err := data.GetArray("templates")
 	if err != nil {
 		return nil, err
 	}

@@ -15,7 +15,7 @@ func (*DailyKnowFrens) Description() string {
 }
 
 func (*DailyKnowFrens) Recurrence() string {
-	return "once"
+	return "daily"
 }
 
 func (*DailyKnowFrens) Category() string {
