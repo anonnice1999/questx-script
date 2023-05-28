@@ -22,10 +22,12 @@ func (*CreateCommunityVideo) Category() string {
 	return SocialNetwork
 }
 
-func (*CreateCommunityVideo) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 700}},
-	}
+func (*CreateCommunityVideo) Points() int {
+	return 700
+}
+
+func (*CreateCommunityVideo) Rewards() []map[string]any {
+	return nil
 }
 
 func (*CreateCommunityVideo) ValidationData() map[string]any {

@@ -22,10 +22,12 @@ func (*InviteFollowCommunity) Category() string {
 	return Community
 }
 
-func (*InviteFollowCommunity) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 100}},
-	}
+func (*InviteFollowCommunity) Points() int {
+	return 100
+}
+
+func (*InviteFollowCommunity) Rewards() []map[string]any {
+	return nil
 }
 
 func (*InviteFollowCommunity) ValidationData() map[string]any {

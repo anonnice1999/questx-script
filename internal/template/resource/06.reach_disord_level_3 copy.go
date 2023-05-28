@@ -22,10 +22,12 @@ func (*ReachDiscordLevel) Category() string {
 	return SocialNetwork
 }
 
-func (*ReachDiscordLevel) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 200}},
-	}
+func (*ReachDiscordLevel) Points() int {
+	return 200
+}
+
+func (*ReachDiscordLevel) Rewards() []map[string]any {
+	return nil
 }
 
 func (*ReachDiscordLevel) ValidationData() map[string]any {

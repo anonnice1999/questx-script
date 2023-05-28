@@ -22,10 +22,12 @@ func (*LeaveStarOnProductHunt) Category() string {
 	return SocialNetwork
 }
 
-func (*LeaveStarOnProductHunt) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 200}},
-	}
+func (*LeaveStarOnProductHunt) Points() int {
+	return 200
+}
+
+func (*LeaveStarOnProductHunt) Rewards() []map[string]any {
+	return nil
 }
 
 func (*LeaveStarOnProductHunt) ValidationData() map[string]any {

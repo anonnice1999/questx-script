@@ -22,10 +22,12 @@ func (*InviteFriendToDiscord) Category() string {
 	return SocialNetwork
 }
 
-func (*InviteFriendToDiscord) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 200}},
-	}
+func (*InviteFriendToDiscord) Points() int {
+	return 200
+}
+
+func (*InviteFriendToDiscord) Rewards() []map[string]any {
+	return nil
 }
 
 func (*InviteFriendToDiscord) ValidationData() map[string]any {

@@ -22,10 +22,12 @@ func (*WriteMedium) Category() string {
 	return SocialNetwork
 }
 
-func (*WriteMedium) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 200}},
-	}
+func (*WriteMedium) Points() int {
+	return 200
+}
+
+func (*WriteMedium) Rewards() []map[string]any {
+	return nil
 }
 
 func (*WriteMedium) ValidationData() map[string]any {

@@ -22,10 +22,12 @@ func (*ParticipateInCommunityEvent) Category() string {
 	return Community
 }
 
-func (*ParticipateInCommunityEvent) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 40}},
-	}
+func (*ParticipateInCommunityEvent) Points() int {
+	return 40
+}
+
+func (*ParticipateInCommunityEvent) Rewards() []map[string]any {
+	return nil
 }
 
 func (*ParticipateInCommunityEvent) ValidationData() map[string]any {

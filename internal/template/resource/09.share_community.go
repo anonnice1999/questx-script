@@ -22,10 +22,12 @@ func (*ShareCommunity) Category() string {
 	return SocialNetwork
 }
 
-func (*ShareCommunity) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 150}},
-	}
+func (*ShareCommunity) Points() int {
+	return 150
+}
+
+func (*ShareCommunity) Rewards() []map[string]any {
+	return nil
 }
 
 func (*ShareCommunity) ValidationData() map[string]any {

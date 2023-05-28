@@ -22,10 +22,12 @@ func (*DailyKnowFrens) Category() string {
 	return SocialNetwork
 }
 
-func (*DailyKnowFrens) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 150}},
-	}
+func (*DailyKnowFrens) Points() int {
+	return 150
+}
+
+func (*DailyKnowFrens) Rewards() []map[string]any {
+	return nil
 }
 
 func (*DailyKnowFrens) ValidationData() map[string]any {

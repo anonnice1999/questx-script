@@ -80,7 +80,8 @@ func Run(apiEndpoint, accessToken string) error {
 				"category_id":     category_id,
 				"recurrence":      template.Recurrence(),
 				"condition_op":    "or",
-				"awards":          template.Awards(),
+				"points":          template.Points(),
+				"awards":          template.Rewards(),
 				"validation_data": template.ValidationData(),
 			}).
 			POST(ctx, api.OAuth2("Bearer", accessToken))

@@ -22,10 +22,12 @@ func (*CreateProductMeme) Category() string {
 	return SocialNetwork
 }
 
-func (*CreateProductMeme) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 200}},
-	}
+func (*CreateProductMeme) Points() int {
+	return 200
+}
+
+func (*CreateProductMeme) Rewards() []map[string]any {
+	return nil
 }
 
 func (*CreateProductMeme) ValidationData() map[string]any {

@@ -22,10 +22,12 @@ func (*SetDiscordAvatarToCommunityLogo) Category() string {
 	return SocialNetwork
 }
 
-func (*SetDiscordAvatarToCommunityLogo) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 100}},
-	}
+func (*SetDiscordAvatarToCommunityLogo) Points() int {
+	return 100
+}
+
+func (*SetDiscordAvatarToCommunityLogo) Rewards() []map[string]any {
+	return nil
 }
 
 func (*SetDiscordAvatarToCommunityLogo) ValidationData() map[string]any {

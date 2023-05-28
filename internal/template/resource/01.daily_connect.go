@@ -22,10 +22,12 @@ func (*DailyConnectTemplate) Category() string {
 	return Community
 }
 
-func (*DailyConnectTemplate) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 10}},
-	}
+func (*DailyConnectTemplate) Points() int {
+	return 10
+}
+
+func (*DailyConnectTemplate) Rewards() []map[string]any {
+	return nil
 }
 
 func (*DailyConnectTemplate) ValidationData() map[string]any {

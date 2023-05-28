@@ -22,10 +22,12 @@ func (*SetTwitterAvatarToCommunityLogo) Category() string {
 	return SocialNetwork
 }
 
-func (*SetTwitterAvatarToCommunityLogo) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 100}},
-	}
+func (*SetTwitterAvatarToCommunityLogo) Points() int {
+	return 100
+}
+
+func (*SetTwitterAvatarToCommunityLogo) Rewards() []map[string]any {
+	return nil
 }
 
 func (*SetTwitterAvatarToCommunityLogo) ValidationData() map[string]any {

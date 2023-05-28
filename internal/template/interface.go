@@ -5,7 +5,8 @@ type Template interface {
 	Title() string
 	Description() string
 	Recurrence() string
-	Awards() []map[string]any
+	Points() int
+	Rewards() []map[string]any
 	Category() string
 	ValidationData() map[string]any
 }

@@ -22,10 +22,12 @@ func (*FollowTwitter) Category() string {
 	return SocialNetwork
 }
 
-func (*FollowTwitter) Awards() []map[string]any {
-	return []map[string]any{
-		{"type": "points", "data": map[string]any{"points": 10}},
-	}
+func (*FollowTwitter) Points() int {
+	return 10
+}
+
+func (*FollowTwitter) Rewards() []map[string]any {
+	return nil
 }
 
 func (*FollowTwitter) ValidationData() map[string]any {
