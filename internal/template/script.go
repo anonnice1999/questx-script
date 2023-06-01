@@ -115,7 +115,7 @@ func Run(apiEndpoint, accessToken string) error {
 
 func getExistingCategories(ctx context.Context, apiEndpoint, accessToken string) (map[string]string, error) {
 	apiGenerator := api.NewGenerator()
-	resp, err := apiGenerator.New(apiEndpoint, "/getCategories").
+	resp, err := apiGenerator.New(apiEndpoint, "/getTemplateCategories").
 		GET(ctx, api.OAuth2("Bearer", accessToken))
 	if err != nil {
 		return nil, err
