@@ -11,7 +11,7 @@ func (*ParticipateInCommunityEvent) Title() string {
 }
 
 func (*ParticipateInCommunityEvent) Description() string {
-	return "MISSION 🎯\n\nJoin the community Weekly event\n\nGUIDE 📚\n\nJoin in the community weekly event\n\nSUBMISSION 📝\n\nType yes if you participate in the event in the text area"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Join the community Weekly event</p><p><br></p><p><strong>GUIDE</strong> 📚</p><p><br></p><p>Join in the community weekly event</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Type yes if you participate in the event in the text area</p>`
 }
 
 func (*ParticipateInCommunityEvent) Recurrence() string {

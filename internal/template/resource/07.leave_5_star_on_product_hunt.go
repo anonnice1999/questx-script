@@ -11,7 +11,7 @@ func (*LeaveStarOnProductHunt) Title() string {
 }
 
 func (*LeaveStarOnProductHunt) Description() string {
-	return "MISSION 🎯\n\nShare your feedback about our product on Product Hunt\n\nSUBMISSION 📝\n\nUpload a screenshot of your upvote"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Share your feedback about our product on Product Hunt</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Upload a screenshot of your upvote</p>`
 }
 
 func (*LeaveStarOnProductHunt) Recurrence() string {

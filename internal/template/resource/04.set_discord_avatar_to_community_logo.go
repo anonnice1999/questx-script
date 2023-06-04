@@ -11,7 +11,7 @@ func (*SetDiscordAvatarToCommunityLogo) Title() string {
 }
 
 func (*SetDiscordAvatarToCommunityLogo) Description() string {
-	return "MISSION 🎯\n\nAdd Project Logo to your Discord Profile Picture.\n\nYou can find Project Logo here: Link\n\nSUBMISSION 📝\n\nScreenshoot your profile picture please"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Add Project Logo to your Discord Profile Picture.</p><p>You can find Project Logo here:&nbsp;Link</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Screenshoot your profile picture please</p>`
 }
 
 func (*SetDiscordAvatarToCommunityLogo) Recurrence() string {

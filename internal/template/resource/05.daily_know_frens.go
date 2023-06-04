@@ -11,7 +11,7 @@ func (*DailyKnowFrens) Title() string {
 }
 
 func (*DailyKnowFrens) Description() string {
-	return "MISSION 🎯\n\nOnly doing the daily tasks is boring. Buidlers should start building connections in this community.\n\nLet's start a conversation in 💬︱general Channel or international channel with others and meet some friends in our channel!\n\nGuide 📝\n\nStart a conversation in 💬︱general Link\n\nOr international rooms/channels with at least 3 sentences in your own languages"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Only doing the daily tasks is boring. Buidlers should start building connections in this community.&nbsp;</p><p><br></p><p>Let's start a conversation in 💬︱general Channel or international channel with others and meet some friends in our channel!&nbsp;</p><p><br></p><p><strong>Guide</strong> 📝</p><p><br></p><p>Start a conversation in 💬︱general Link</p><p><br></p><p>Or international rooms/channels with at least 3 sentences in your own languages</p>`
 }
 
 func (*DailyKnowFrens) Recurrence() string {

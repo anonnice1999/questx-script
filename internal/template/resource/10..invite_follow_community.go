@@ -11,7 +11,7 @@ func (*InviteFollowCommunity) Title() string {
 }
 
 func (*InviteFollowCommunity) Description() string {
-	return "MISSION 🎯\n\n\n\nGUIDE 📚\n\nGo in your profile, and get your referral by clicking on the button \"invite frens\".\n\nSend your referral links to your friend so they can join our community and claim their first quest.\n\nYou can check your number of invites in your profile.\n\nSUBMISSION 📝\n\nThis quest will auto-validate if you have 1 valid invite."
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Invite your frens to join our community</p><p><br></p><p><strong>GUIDE</strong> 📚</p><p><br></p><p>Go in your profile, and get your referral by clicking on the button "invite frens".&nbsp;</p><p><br></p><p>Send your referral links to your friend so they can join our community and claim their first quest.</p><p><br></p><p>You can check your number of invites in your profile.</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>This quest will auto-validate if you have 1 valid invite.</p>`
 }
 
 func (*InviteFollowCommunity) Recurrence() string {

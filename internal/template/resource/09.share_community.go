@@ -11,7 +11,7 @@ func (*ShareCommunity) Title() string {
 }
 
 func (*ShareCommunity) Description() string {
-	return "MISSION 🎯\n\nShare Information to one of your Local Communities. \n\nIt could be a Local Online forum, Facebook page, Whatsapp Group or even your high school group!\n\nGUIDE 📚\n\nShare to someone you know or one of your local community\n\nSUBMISSION 📝\n\nLink to your shared post"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Share Information to one of your Local Communities.&nbsp;</p><p><br></p><p>It could be a Local Online forum, Facebook page, Whatsapp Group or even your high school group!</p><p><br></p><p><strong>GUIDE</strong> 📚</p><p><br></p><p>Share to someone you know or one of your local community</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Link to your shared post</p>`
 }
 
 func (*ShareCommunity) Recurrence() string {

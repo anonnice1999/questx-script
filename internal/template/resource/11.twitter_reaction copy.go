@@ -11,7 +11,7 @@ func (*TwitterReaction) Title() string {
 }
 
 func (*TwitterReaction) Description() string {
-	return "Just like reply and retweet the post, this quest will auto validate when you finish"
+	return `Just like reply and retweet the post, this quest will auto validate when you finish`
 }
 
 func (*TwitterReaction) Recurrence() string {

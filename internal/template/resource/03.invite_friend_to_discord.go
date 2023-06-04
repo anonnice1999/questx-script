@@ -7,11 +7,11 @@ func (*InviteFriendToDiscord) Type() string {
 }
 
 func (*InviteFriendToDiscord) Title() string {
-	return "Invite friend to Discord"
+	return "Invite friens to Discord"
 }
 
 func (*InviteFriendToDiscord) Description() string {
-	return "MISSION 🎯\n\nInvite 3 persons in the Discord. Track your invites with invites tracker in Discord\n\nGuide 📝\n\nUpload a screenshot of your invites in the discord\n\nCreate your own invite link\n\nUse the command /invites in 🤖bot-channel"
+	return "<p><strong>MISSION 🎯</strong></p><p><br></p><p>Invite 3 persons in the Discord. Track your invites with invites tracker in Discord</p><p><br></p><p><strong>Guide</strong> 📝</p><p><br></p><p>Upload a screenshot of your invites in the discord</p><p><br></p><p>Create your own invite link</p><p><br></p><p>Use the command /invites in 🤖bot-channel</p><p><br></p><p>Take the picture and submit here</p>"
 }
 
 func (*InviteFriendToDiscord) Recurrence() string {

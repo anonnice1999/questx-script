@@ -11,7 +11,7 @@ func (*TryProductDemo) Title() string {
 }
 
 func (*TryProductDemo) Description() string {
-	return "MISSION 🎯\n\nRead this page\n\nSUBMISSION 📝\n\nIt will auto-validate if you click on the link."
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Read this page</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>It will auto-validate if you click on the link.</p>`
 }
 
 func (*TryProductDemo) Recurrence() string {
