@@ -11,7 +11,7 @@ func (*FollowTwitter) Title() string {
 }
 
 func (*FollowTwitter) Description() string {
-	return "MISSION 🎯\n\nFollow us on twitter\n\nhttps://twitter.com/exemple\n\nGUIDE 📚\n\nFollow us and this quest will automatically claim\n\nSUBMISSION 📝\n\nThis is automatically validate quest"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Follow us on twitter</p><p><br></p><p><strong>GUIDE</strong> 📚</p><p><br></p><p>Follow us and this quest will automatically claim</p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>This is automatically validate quest</p>`
 }
 
 func (*FollowTwitter) Recurrence() string {

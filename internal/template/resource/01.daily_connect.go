@@ -11,7 +11,7 @@ func (*DailyConnectTemplate) Title() string {
 }
 
 func (*DailyConnectTemplate) Description() string {
-	return "Claim your free Gem daily"
+	return "<p>Claim your free Gem daily</p>"
 }
 
 func (*DailyConnectTemplate) Recurrence() string {

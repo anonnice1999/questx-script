@@ -11,7 +11,7 @@ func (*WriteMedium) Title() string {
 }
 
 func (*WriteMedium) Description() string {
-	return "MISSION 🎯\n\nWrite an article about Project at least 300 words in any languages.\n\nGUIDE 📚\n\nBe creative, be positive.\nType of article:\n- information\n- tutorial\n- analyses\n\n- cases studies\n\nSUBMISSION 📝\n\nUpload your piece of art on Medium (make it public!)\n\nPost your work on #✍-medium Channel on Discord Link"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Write an article about Project at least 300 words in any languages.</p><p><br></p><p><strong>GUIDE</strong> 📚</p><p><br></p><p>Be creative, be positive.</p><p><br></p><p>Type of article:</p><p><br></p><p>- information</p><p><br></p><p>- tutorial</p><p><br></p><p>- analyses</p><p><br></p><p>- cases studies</p><p><br></p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Upload your piece of art on Medium (make it public!)</p><p><br></p><p>Post your work on #✍-medium Channel on Discord&nbsp;Link</p>`
 }
 
 func (*WriteMedium) Recurrence() string {

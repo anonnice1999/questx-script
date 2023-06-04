@@ -11,7 +11,7 @@ func (*SetTwitterAvatarToCommunityLogo) Title() string {
 }
 
 func (*SetTwitterAvatarToCommunityLogo) Description() string {
-	return "MISSION 🎯\n\nAdd Logo to your Twitter Profile Picture.\nYou can find Logo here: Link\n\nSUBMISSION 📝\n\nSubmit your Twitter URL"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Add Logo to your Twitter Profile Picture.</p><p>You can find Logo here:&nbsp;Link</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Submit your Twitter URL</p>`
 }
 
 func (*SetTwitterAvatarToCommunityLogo) Recurrence() string {

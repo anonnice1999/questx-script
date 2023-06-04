@@ -11,7 +11,7 @@ func (*CreateProductMeme) Title() string {
 }
 
 func (*CreateProductMeme) Description() string {
-	return "MISSION 🎯\n\nCreate a funny meme about the project and post in 🤣︱memes Channel Link\n\nWe value creativity, good luck!\n\nSUBMISSION 📝\n\nUpload the Printscreen of you meme message  🤣︱memes Channel Link\n\nNote: Please do not copy"
+	return `<p><strong>MISSION</strong> 🎯</p><p><br></p><p>Create a funny meme about the project and post in 🤣︱memes Channel Link</p><p><br></p><p>We value creativity, good luck!</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p><br></p><p>Upload the Printscreen of you meme message 🤣︱memes Channel&nbsp;Link</p><p><br></p><p>Note: Please do not copy</p>`
 }
 
 func (*CreateProductMeme) Recurrence() string {

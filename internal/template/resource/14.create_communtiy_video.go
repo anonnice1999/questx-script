@@ -11,7 +11,7 @@ func (*CreateCommunityVideo) Title() string {
 }
 
 func (*CreateCommunityVideo) Description() string {
-	return "MISSION 🎯\nCreate a  short video media about the Project\n\nGUIDE 📚\nThe Youtube Video must be from 3 minutes long.\n\nThe video can speak about anything. Example of videos:\n- presentation\n- product review or demo\n- testimonials \n- tutorial\n- educational\n- analyses\n- cases studies\n- ....Make sure you use hashtags\n\nSUBMISSION 📝\nUpload the link of your video on the Youtube also our #🖥-youtube channel Link in discord"
+	return `<p><strong>MISSION</strong> 🎯</p><p>Create a short video media about the Project</p><p><br></p><p><strong>GUIDE</strong> 📚</p><p>The Youtube Video must be from 3 minutes long.</p><p><br></p><p>The video can speak about anything. Example of videos:</p><p><br></p><p>- presentation</p><p><br></p><p>- product review or demo</p><p><br></p><p>- testimonials</p><p><br></p><p>- tutorial</p><p><br></p><p>- educational</p><p><br></p><p>- analyses</p><p><br></p><p>- cases studies</p><p><br></p><p>- ....Make sure you use hashtags</p><p><br></p><p><strong>SUBMISSION</strong> 📝</p><p>Upload the link of your video on the Youtube also our #🖥-youtube channel Link in discord</p><p><br></p>`
 }
 
 func (*CreateCommunityVideo) Recurrence() string {
