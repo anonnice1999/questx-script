@@ -1,2 +1,5 @@
 generate-template:
-	./run.sh
+	./deploy/generate-template.sh
+
+stress-game:
+	./deploy/stress-game.sh
