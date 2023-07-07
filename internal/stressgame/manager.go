@@ -49,6 +49,7 @@ func (m *Manager) Run() error {
 			client.Run()
 			wait.Done()
 		}()
+		time.Sleep(10 * time.Millisecond)
 	}
 
 	wait.Wait()

@@ -82,7 +82,7 @@ func (c *Client) Run() {
 		}
 	}()
 
-	ticker := time.NewTicker(20 * time.Millisecond)
+	ticker := time.NewTicker(50 * time.Millisecond)
 	defer ticker.Stop()
 
 	for {
@@ -112,6 +112,7 @@ func (c *Client) Run() {
 			}
 		case <-interrupt:
 			log.Println("interrupt")
+			time.Sleep(time.Duration(rand.Intn(30)) * time.Second)
 
 			// Cleanly close the connection by sending a close message and then
 			// waiting (with timeout) for the server to close the connection.
