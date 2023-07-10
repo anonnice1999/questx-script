@@ -1,7 +1,9 @@
 package stressgame
 
 import (
+	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"math/rand"
 	"net/http"
@@ -11,6 +13,7 @@ import (
 	"os/signal"
 	"time"
 
+	"github.com/anonnice1999/questx-script/pkg/api"
 	"github.com/gorilla/websocket"
 )
 
@@ -20,7 +23,32 @@ type Client struct {
 	mapHeight int
 }
 
-func NewClient(serverAddr, token string, mapWidth, mapHeight int) (*Client, error) {
+func NewClient(serverAddr, token, apiEndpoint, characterID, communityHandle string, mapWidth, mapHeight int) (*Client, error) {
+	apiGenerator := api.NewGenerator()
+	resp, err := apiGenerator.New(apiEndpoint, "/buyCharacter").
+		Body(api.JSON{
+			"character_id":     characterID,
+			"community_handle": communityHandle,
+		}).
+		POST(context.Background(), api.OAuth2("Bearer", token))
+	if err != nil {
+		return nil, err
+	}
+
+	body, ok := resp.Body.(api.JSON)
+	if !ok {
+		return nil, fmt.Errorf("invalid body: %v", resp.Body)
+	}
+
+	code, err := body.GetInt("code")
+	if err != nil {
+		return nil, err
+	}
+
+	if code != 0 && code != 100006 {
+		return nil, fmt.Errorf("invalid response: %v", body)
+	}
+
 	jar, err := cookiejar.New(&cookiejar.Options{})
 	if err != nil {
 		return nil, err
@@ -83,6 +111,8 @@ func (c *Client) Run() {
 	}()
 
 	ticker := time.NewTicker(50 * time.Millisecond)
+	numberMsgTicker := time.NewTicker(time.Second)
+	numberMsg := 0
 	defer ticker.Stop()
 
 	for {
@@ -110,6 +140,13 @@ func (c *Client) Run() {
 				log.Println("Cannot write message anymore:", err)
 				return
 			}
+
+			numberMsg++
+
+		case <-numberMsgTicker.C:
+			fmt.Println(numberMsg)
+			numberMsg = 0
+
 		case <-interrupt:
 			log.Println("interrupt")
 			time.Sleep(time.Duration(rand.Intn(30)) * time.Second)

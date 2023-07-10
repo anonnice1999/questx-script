@@ -14,7 +14,11 @@ func startStressGame(cCtx *cli.Context) error {
 	mapWidth := parseInt(getEnv("GAME_MAP_WIDTH", "4800"))
 	mapHeight := parseInt(getEnv("GAME_MAP_HEIGHT", "4800"))
 	nClients := parseInt(getEnv("N_CLIENTS", "30"))
+	apiEndpoint := getEnv("API_ENDPOINT", "http://localhost:8080")
+	characterID := getEnv("INIT_CHARACTER_ID", "unknown-character-id")
+	communityHandle := getEnv("COMMUNITY_HANDLE", "unknown-handle")
 
-	manager := stressgame.NewManager(gameServer, tokenSecret, mapWidth, mapHeight, nClients)
+	manager := stressgame.NewManager(gameServer, tokenSecret, apiEndpoint, characterID,
+		communityHandle, mapWidth, mapHeight, nClients)
 	return manager.Run()
 }

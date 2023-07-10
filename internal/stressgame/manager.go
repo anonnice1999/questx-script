@@ -10,20 +10,26 @@ import (
 )
 
 type Manager struct {
-	serverAddress string
-	tokenEngine   token.Engine
-	mapHeight     int
-	mapWidth      int
-	nClients      int
+	serverAddress   string
+	tokenEngine     token.Engine
+	mapHeight       int
+	mapWidth        int
+	nClients        int
+	apiEndpoint     string
+	characterID     string
+	communityHandle string
 }
 
-func NewManager(serverAddress, tokenSecret string, mapWidth, mapHeight, nClients int) *Manager {
+func NewManager(serverAddress, tokenSecret, apiEndpoint, characterID, communityHandle string, mapWidth, mapHeight, nClients int) *Manager {
 	return &Manager{
-		serverAddress: serverAddress,
-		tokenEngine:   token.NewEngine(tokenSecret),
-		mapWidth:      mapWidth,
-		mapHeight:     mapHeight,
-		nClients:      nClients,
+		serverAddress:   serverAddress,
+		tokenEngine:     token.NewEngine(tokenSecret),
+		mapWidth:        mapWidth,
+		mapHeight:       mapHeight,
+		nClients:        nClients,
+		apiEndpoint:     apiEndpoint,
+		characterID:     characterID,
+		communityHandle: communityHandle,
 	}
 }
 
@@ -39,9 +45,11 @@ func (m *Manager) Run() error {
 		}
 
 		log.Println("Connect to", m.serverAddress)
-		client, err := NewClient(m.serverAddress, token, m.mapWidth, m.mapHeight)
+		client, err := NewClient(m.serverAddress, token, m.apiEndpoint, m.characterID,
+			m.communityHandle, m.mapWidth, m.mapHeight)
 		if err != nil {
-			return err
+			log.Println("Failed to connect for user", user, ":", err)
+			continue
 		}
 
 		go func() {
@@ -49,7 +57,7 @@ func (m *Manager) Run() error {
 			client.Run()
 			wait.Done()
 		}()
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(2000 * time.Millisecond)
 	}
 
 	wait.Wait()
