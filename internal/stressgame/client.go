@@ -2,6 +2,7 @@ package stressgame
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -109,6 +110,22 @@ func (c *Client) Run() {
 			if t == websocket.CloseMessage {
 				log.Println("Close reason message:", msg)
 			}
+
+			if t == websocket.TextMessage {
+				decodedMsg := make([]byte, base64.StdEncoding.DecodedLen(len(msg)))
+				if _, err := base64.StdEncoding.Decode(decodedMsg, msg); err != nil {
+					log.Println("Cannot decode:", err)
+					continue
+				}
+
+				umsg, err := ws.UncompressFlate(decodedMsg)
+				if err != nil {
+					log.Println("Cannot uncompress", err)
+					continue
+				}
+
+				log.Println(string(umsg))
+			}
 		}
 	}()
 
@@ -137,13 +154,16 @@ func (c *Client) Run() {
 				return
 			}
 
-			cb, err := ws.CompressGZIP(b)
+			cb, err := ws.CompressFlate(b)
 			if err != nil {
 				log.Println("Cannot compress b:", err)
 				return
 			}
 
-			err = c.wsClient.WriteMessage(websocket.TextMessage, cb)
+			encodedMsg := make([]byte, base64.StdEncoding.EncodedLen(len(cb)))
+			base64.StdEncoding.Encode(encodedMsg, cb)
+
+			err = c.wsClient.WriteMessage(websocket.TextMessage, encodedMsg)
 			if err != nil {
 				log.Println("Cannot write message anymore:", err)
 				return
