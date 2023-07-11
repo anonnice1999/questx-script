@@ -117,14 +117,6 @@ func (c *Client) Run() {
 					log.Println("Cannot decode:", err)
 					continue
 				}
-
-				umsg, err := ws.UncompressFlate(decodedMsg)
-				if err != nil {
-					log.Println("Cannot uncompress", err)
-					continue
-				}
-
-				log.Println(string(umsg))
 			}
 		}
 	}()
