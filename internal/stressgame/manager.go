@@ -3,6 +3,8 @@ package stressgame
 import (
 	"fmt"
 	"log"
+	"os"
+	"os/signal"
 	"sync"
 	"time"
 
@@ -34,30 +36,39 @@ func NewManager(serverAddress, tokenSecret, apiEndpoint, characterID, communityH
 }
 
 func (m *Manager) Run() error {
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, os.Interrupt)
+
 	wait := sync.WaitGroup{}
-	wait.Add(m.nClients)
 
 	for i := 0; i < m.nClients; i++ {
-		user := fmt.Sprintf("testuser%d", i)
-		token, err := m.tokenEngine.Generate(time.Minute, map[string]any{"id": user})
-		if err != nil {
-			return err
-		}
+		select {
+		case <-interrupt:
+			i = m.nClients
 
-		log.Println("Connect to", m.serverAddress)
-		client, err := NewClient(m.serverAddress, token, m.apiEndpoint, m.characterID,
-			m.communityHandle, m.mapWidth, m.mapHeight)
-		if err != nil {
-			log.Println("Failed to connect for user", user, ":", err)
-			continue
-		}
+		default:
+			userID := fmt.Sprintf("testuser%d", i)
+			token, err := m.tokenEngine.Generate(time.Minute, map[string]any{"id": userID})
+			if err != nil {
+				return err
+			}
 
-		go func() {
-			log.Println("Start room for", user)
-			client.Run()
-			wait.Done()
-		}()
-		time.Sleep(2000 * time.Millisecond)
+			log.Println("Connect to", m.serverAddress)
+			client, err := NewClient(m.serverAddress, userID, token, m.apiEndpoint, m.characterID,
+				m.communityHandle, m.mapWidth, m.mapHeight)
+			if err != nil {
+				log.Println("Failed to connect for user", userID, ":", err)
+				continue
+			}
+
+			wait.Add(1)
+			go func() {
+				log.Println("Start room for", userID)
+				client.Run()
+				wait.Done()
+			}()
+			time.Sleep(50 * time.Millisecond)
+		}
 	}
 
 	wait.Wait()

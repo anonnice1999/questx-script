@@ -14,16 +14,18 @@ import (
 	"time"
 
 	"github.com/anonnice1999/questx-script/pkg/api"
+	"github.com/anonnice1999/questx-script/pkg/ws"
 	"github.com/gorilla/websocket"
 )
 
 type Client struct {
+	userID    string
 	wsClient  *websocket.Conn
 	mapWidth  int
 	mapHeight int
 }
 
-func NewClient(serverAddr, token, apiEndpoint, characterID, communityHandle string, mapWidth, mapHeight int) (*Client, error) {
+func NewClient(serverAddr, userID, token, apiEndpoint, characterID, communityHandle string, mapWidth, mapHeight int) (*Client, error) {
 	apiGenerator := api.NewGenerator()
 	resp, err := apiGenerator.New(apiEndpoint, "/buyCharacter").
 		Body(api.JSON{
@@ -82,7 +84,7 @@ func NewClient(serverAddr, token, apiEndpoint, characterID, communityHandle stri
 		return nil, err
 	}
 
-	return &Client{wsClient: wsClient, mapWidth: mapWidth, mapHeight: mapHeight}, nil
+	return &Client{userID: userID, wsClient: wsClient, mapWidth: mapWidth, mapHeight: mapHeight}, nil
 }
 
 func (c *Client) Close() error {
@@ -111,7 +113,7 @@ func (c *Client) Run() {
 	}()
 
 	ticker := time.NewTicker(50 * time.Millisecond)
-	numberMsgTicker := time.NewTicker(time.Second)
+	numberMsgTicker := time.NewTicker(100 * time.Second)
 	numberMsg := 0
 	defer ticker.Stop()
 
@@ -135,7 +137,13 @@ func (c *Client) Run() {
 				return
 			}
 
-			err = c.wsClient.WriteMessage(websocket.TextMessage, b)
+			cb, err := ws.CompressGZIP(b)
+			if err != nil {
+				log.Println("Cannot compress b:", err)
+				return
+			}
+
+			err = c.wsClient.WriteMessage(websocket.TextMessage, cb)
 			if err != nil {
 				log.Println("Cannot write message anymore:", err)
 				return
@@ -149,7 +157,7 @@ func (c *Client) Run() {
 
 		case <-interrupt:
 			log.Println("interrupt")
-			time.Sleep(time.Duration(rand.Intn(30)) * time.Second)
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 
 			// Cleanly close the connection by sending a close message and then
 			// waiting (with timeout) for the server to close the connection.
