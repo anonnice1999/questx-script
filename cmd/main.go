@@ -24,6 +24,12 @@ func main() {
 			Usage:     "Stress test game",
 			ArgsUsage: "<genesisPath>",
 		},
+		{
+			Action:    startStressChat,
+			Name:      "stress-chat",
+			Usage:     "Stress test chat",
+			ArgsUsage: "<genesisPath>",
+		},
 	}
 
 	if err := cliapp.Run(os.Args); err != nil {

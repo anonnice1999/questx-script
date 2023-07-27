@@ -3,3 +3,6 @@ generate-template:
 
 stress-game:
 	./deploy/stress-game.sh
+
+stress-chat:
+	./deploy/stress-chat.sh
