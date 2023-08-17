@@ -17,18 +17,18 @@ func main() {
 			Name:      "generate-template",
 			Usage:     "Generate template",
 			ArgsUsage: "<genesisPath>",
-			Flags: []cli.Flag{
-				&cli.StringFlag{
-					Name:        "endpoint",
-					DefaultText: "http://localhost:8080",
-					Aliases:     []string{"e"},
-				},
-				&cli.StringFlag{
-					Name:     "token",
-					Required: true,
-					Aliases:  []string{"t"},
-				},
-			},
+		},
+		{
+			Action:    startStressGame,
+			Name:      "stress-game",
+			Usage:     "Stress test game",
+			ArgsUsage: "<genesisPath>",
+		},
+		{
+			Action:    startStressChat,
+			Name:      "stress-chat",
+			Usage:     "Stress test chat",
+			ArgsUsage: "<genesisPath>",
 		},
 	}
 
