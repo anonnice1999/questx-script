@@ -17,5 +17,5 @@ func startStressChat(cCtx *cli.Context) error {
 
 	manager := stresschat.NewManager(chatServer, tokenSecret, apiEndpoint,
 		communityHandle, channelID, nClients)
-	return manager.Run()
+	return manager.RunCycle(40)
 }

@@ -44,12 +44,11 @@ func (m *Manager) Run() error {
 
 		default:
 			userID := fmt.Sprintf("testuser%d", i)
-			token, err := m.tokenEngine.Generate(time.Minute, map[string]any{"id": userID})
+			token, err := m.tokenEngine.Generate(2000*time.Hour, map[string]any{"id": userID})
 			if err != nil {
 				return err
 			}
 
-			log.Println("Connect to", m.serverAddress)
 			client, err := NewClient(m.serverAddress, userID, token, m.apiEndpoint,
 				m.communityHandle, m.channelID)
 			if err != nil {
@@ -68,5 +67,42 @@ func (m *Manager) Run() error {
 	}
 
 	wait.Wait()
+	return nil
+}
+
+func (m *Manager) RunCycle(n int) error {
+	for x := 0; x < n; x++ {
+		clients := []*Client{}
+		for i := 1000; i < 1000+m.nClients; i++ {
+			userID := fmt.Sprintf("testuser%d", i)
+			token, err := m.tokenEngine.Generate(2000*time.Hour, map[string]any{"id": userID})
+			if err != nil {
+				return err
+			}
+
+			client, err := NewClient(m.serverAddress, userID, token, m.apiEndpoint,
+				m.communityHandle, m.channelID)
+			if err != nil {
+				log.Println("Failed to connect for user", userID, ":", err)
+				continue
+			}
+
+			clients = append(clients, client)
+
+			go func() {
+				log.Println("Start room for", userID)
+				client.Run(m.apiEndpoint, m.communityHandle, token, m.channelID)
+			}()
+			time.Sleep(50 * time.Millisecond)
+		}
+
+		time.Sleep(time.Minute)
+		for _, c := range clients {
+			c.Close()
+		}
+
+		time.Sleep(10 * time.Minute)
+	}
+
 	return nil
 }
