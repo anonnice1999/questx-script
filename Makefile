@@ -6,3 +6,9 @@ stress-game:
 
 stress-chat:
 	./deploy/stress-chat.sh
+
+wallet:
+	./deploy/wallet.sh ${NONCE}
+
+wallet-platform:
+	./deploy/wallet-platform.sh

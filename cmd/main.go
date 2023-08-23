@@ -30,6 +30,19 @@ func main() {
 			Usage:     "Stress test chat",
 			ArgsUsage: "<genesisPath>",
 		},
+		{
+			Action:    startWallet,
+			Name:      "wallet",
+			Usage:     "generate wallet",
+			ArgsUsage: "<genesisPath>",
+			Flags: []cli.Flag{
+				&cli.StringFlag{
+					Name:        "nonce",
+					DefaultText: "",
+					Aliases:     []string{"n"},
+				},
+			},
+		},
 	}
 
 	if err := cliapp.Run(os.Args); err != nil {
