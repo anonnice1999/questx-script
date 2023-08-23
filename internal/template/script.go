@@ -187,7 +187,7 @@ func createNewCategory(
 			return nil, fmt.Errorf("cannot create category %s", c)
 		}
 
-		data, err := body.GetJSON("data")
+		data, err := body.GetJSON("data.category")
 		if err != nil {
 			return nil, err
 		}
